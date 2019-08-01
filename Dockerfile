@@ -14,4 +14,4 @@ RUN pip3 install --no-cache-dir -r /requirements.txt
 WORKDIR /app
 COPY ./simple_app /app
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["gunicorn", "-b 0.0.0.0:8080", "simple_app.wsgi:application"]
